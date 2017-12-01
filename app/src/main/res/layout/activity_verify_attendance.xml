@@ -71,17 +71,6 @@
             android:background="@color/colorPrimary"
             android:text="Go" />
 
-        <EditText
-            android:id="@+id/editText4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/role"
-            android:layout_below="@+id/role"
-            android:layout_marginTop="13dp"
-            android:ems="10"
-            android:hint="New People"
-            android:inputType="textPersonName" />
-
     </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
