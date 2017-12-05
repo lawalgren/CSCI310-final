@@ -28,10 +28,14 @@ import okhttp3.Response;
 
 public class VerifyAttendance extends AppCompatActivity {
 
-    @BindView(R.id.firstName) EditText firstName;
-    @BindView(R.id.lastName) EditText lastName;
-    @BindView(R.id.role) EditText role;
-    @BindView(R.id.go) Button go;
+    @BindView(R.id.firstName)
+    EditText firstName;
+    @BindView(R.id.lastName)
+    EditText lastName;
+    @BindView(R.id.role)
+    EditText role;
+    @BindView(R.id.go)
+    Button go;
     String firstNameText;
     String lastNameText;
     String roleText;
@@ -51,15 +55,14 @@ public class VerifyAttendance extends AppCompatActivity {
             }
         });
     }
+
     public void scanBarcode(View view) {
         new IntentIntegrator(this).initiateScan();
     }
 
     OkHttpClient client = new OkHttpClient();
-    int success;
-    String message;
 
-    void doGetRequest(String url) throws IOException{
+    void doGetRequest(String url) throws IOException {
 
         Request request = new Request.Builder()
                 .url(url)
@@ -80,11 +83,12 @@ public class VerifyAttendance extends AppCompatActivity {
 
                     @Override
                     public void onResponse(Call call, final Response response) throws IOException {
-                      String res = response.body().string();
+                        String res = response.body().string();
                         try {
                             JSONObject obj = new JSONObject(res);
-                            success = obj.getInt("success");
-                            message = obj.getString("message");
+                            int success = obj.getInt("success");
+                            String message = obj.getString("message");
+                            processResults(success, message);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -102,23 +106,21 @@ public class VerifyAttendance extends AppCompatActivity {
 
                 try {
                     doGetRequest(result.getContents() + "&firstName=" + firstNameText + "&lastName=" + lastNameText + "&role=" + roleText);
-                    Thread.sleep(4000);
-                    if (success == 1) {
-                        Toast.makeText(this, "Verified!", Toast.LENGTH_LONG).show();
-                        finish();
-                    } else {
-                        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-                    }
                 } catch (IOException e) {
                     e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
-
             }
-        }
-         else {
+        } else {
             super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+
+    public void processResults(int success, String message) {
+        if (success == 1) {
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            finish();
+        } else {
+            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         }
     }
 }

@@ -29,8 +29,7 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //load login page
-                    textView2.setText("Login");
+                startActivity(new Intent(view.getContext(), Login.class));
             }
         });
         verifyattendance.setOnClickListener(new View.OnClickListener() {

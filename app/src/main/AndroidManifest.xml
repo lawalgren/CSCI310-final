@@ -23,7 +23,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Login" />
-        <activity android:name=".VerifyAttendance"></activity>
+        <activity android:name=".VerifyAttendance" />
+        <activity android:name=".GroupsView"></activity>
     </application>
 
 </manifest>

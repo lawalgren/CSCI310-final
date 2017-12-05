@@ -51,7 +51,7 @@
             android:text="Go" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/Description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -63,6 +63,20 @@
             android:textStyle="bold"
             tools:layout_editor_absoluteX="154dp"
             tools:layout_editor_absoluteY="99dp" />
+
+        <ToggleButton
+            android:id="@+id/togglereglogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/password"
+            android:layout_alignStart="@+id/login_go"
+            android:layout_marginBottom="24dp"
+            android:background="@android:color/transparent"
+            android:checked="false"
+            android:text="Register"
+            android:textColor="@color/colorPrimary"
+            android:textOff="Register"
+            android:textOn="Login" />
 
     </RelativeLayout>
 
