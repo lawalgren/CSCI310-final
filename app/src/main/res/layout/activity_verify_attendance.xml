@@ -17,15 +17,16 @@
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/background" />
 
-        <TextView
-            android:id="@+id/textView"
+        <EditText
+            android:id="@+id/firstName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/firstName"
+            android:layout_above="@+id/lastName"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="28dp"
-            android:text="Verify Attendance"
-            android:textSize="30sp" />
+            android:layout_marginBottom="22dp"
+            android:ems="10"
+            android:hint="First Name"
+            android:inputType="textPersonName" />
 
         <EditText
             android:id="@+id/lastName"
@@ -33,20 +34,9 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/role"
             android:layout_alignStart="@+id/firstName"
-            android:layout_marginBottom="18dp"
+            android:layout_marginBottom="22dp"
             android:ems="10"
             android:hint="Last Name"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/firstName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/lastName"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="59dp"
-            android:ems="10"
-            android:hint="First Name"
             android:inputType="textPersonName" />
 
         <EditText
@@ -57,9 +47,7 @@
             android:layout_centerVertical="true"
             android:ems="10"
             android:hint="Role"
-            android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="237dp" />
+            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/go"
@@ -67,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/role"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="76dp"
+            android:layout_marginTop="70dp"
             android:background="@color/colorPrimary"
             android:text="Go" />
 
