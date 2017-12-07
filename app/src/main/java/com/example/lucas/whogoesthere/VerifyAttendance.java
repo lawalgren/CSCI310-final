@@ -83,15 +83,16 @@ public class VerifyAttendance extends AppCompatActivity {
 
                     @Override
                     public void onResponse(Call call, final Response response) throws IOException {
-                        String res = response.body().string();
-                        try {
-                            JSONObject obj = new JSONObject(res);
-                            int success = obj.getInt("success");
-                            String message = obj.getString("message");
-                            processResults(success, message);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                                try {
+                                    String res = response.body().string();
+                                    processResults(res);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
                     }
                 });
     }
@@ -103,9 +104,11 @@ public class VerifyAttendance extends AppCompatActivity {
             if (result.getContents() == null) {
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
             } else {
-
                 try {
-                    doGetRequest(result.getContents() + "&firstName=" + firstNameText + "&lastName=" + lastNameText + "&role=" + roleText);
+                    String str1 = "http://adm-store.com/AttendanceDB/add_stat.php?username=anon&password=1234P@ssw0rd&" + result.getContents() + "&firstName=" + firstNameText + "&lastName=" + lastNameText + "&role=" + roleText;
+                    Log.i("getUrl", str1);
+                    doGetRequest(str1);
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -115,12 +118,17 @@ public class VerifyAttendance extends AppCompatActivity {
         }
     }
 
-    public void processResults(int success, String message) {
-        if (success == 1) {
+    public void processResults(String res) {
+        try {
+            JSONObject obj = new JSONObject(res);
+            int success = obj.getInt("success");
+            String message = obj.getString("message");
             Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-            finish();
-        } else {
-            Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+            if (success == 1) {
+                finish();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
     }
 }
