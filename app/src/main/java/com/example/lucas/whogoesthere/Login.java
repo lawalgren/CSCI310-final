@@ -40,6 +40,8 @@ public class Login extends AppCompatActivity {
     @BindView(R.id.Description)
     TextView Description;
     boolean register = LOGIN;
+    String usernameText;
+    String passwordText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +63,9 @@ public class Login extends AppCompatActivity {
         login_go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String usernameText = username.getText().toString();
-                String passwordText = password.getText().toString();
+                usernameText = username.getText().toString();
+                passwordText = password.getText().toString();
+
                 if (register == REGISTER)
                     registerUser(usernameText, passwordText);
                 else
@@ -99,6 +102,7 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onResponse(Call call, final Response response) throws IOException {
                         runOnUiThread(new Runnable() {
+                            @Override
                             public void run() {
                                 String res = null;
                                 try {
@@ -123,7 +127,7 @@ public class Login extends AppCompatActivity {
 
     public void loginUser(String username, String password) {
         try {
-            doGetRequest("http://adm-store.com/AttendanceDB/login.php", username, password);
+            doGetRequest("http://adm-store.com/AttendanceDB/login_for_client.php", username, password);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -136,7 +140,10 @@ public class Login extends AppCompatActivity {
             int success = res.getInt("success");
             Toast.makeText(this, message, Toast.LENGTH_LONG).show();
             if (success == 1) {
-                startActivity(new Intent(this, GroupsView.class) );
+                Intent i = new Intent(this, GroupsView.class);
+                i.putExtra("username", usernameText);
+                i.putExtra("password", passwordText);
+                startActivity(i);
             }
         } catch (JSONException e) {
             e.printStackTrace();

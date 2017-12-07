@@ -7,8 +7,10 @@
     tools:context="com.example.lucas.whogoesthere.GroupsView">
 
     <RelativeLayout
+        android:id="@+id/relay"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
 
         <ImageView
             android:id="@+id/imageView4"
