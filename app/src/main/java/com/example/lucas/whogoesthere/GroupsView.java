@@ -169,7 +169,7 @@ public class GroupsView extends AppCompatActivity {
                     i.putExtra("groupname", groupnameText);
                     startActivity(i);
 
-                    return false;
+                    return true;
                 }
             });
 
@@ -177,5 +177,4 @@ public class GroupsView extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
 }
