@@ -45,6 +45,7 @@ public class VerifyAttendance extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_attendance);
         ButterKnife.bind(this);
+        getSupportActionBar().setTitle("Verify Attendance");
         go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

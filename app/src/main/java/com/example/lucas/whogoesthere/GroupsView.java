@@ -2,9 +2,13 @@ package com.example.lucas.whogoesthere;
 
 import android.content.Intent;
 import android.database.DataSetObserver;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -16,6 +20,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.support.v7.widget.Toolbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,6 +42,7 @@ import okhttp3.Response;
 
 public class GroupsView extends AppCompatActivity {
     @BindView(R.id.groups) ListView groups;
+    @BindView(R.id.groupsToolbar) Toolbar groupsToolbar;
     String username;
     String password;
     class Group {
@@ -49,6 +55,9 @@ public class GroupsView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groups_view);
         ButterKnife.bind(this);
+        setSupportActionBar(groupsToolbar);
+        getSupportActionBar().setTitle("Groups");
+
         Intent intent = getIntent();
         username = intent.getStringExtra("username");
         password = intent.getStringExtra("password");
@@ -58,10 +67,26 @@ public class GroupsView extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_groupsview, menu);
+        return true;
     }
 
-    OkHttpClient client = new OkHttpClient();
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.addgroup) {
+            Intent i = new Intent(this, CreateGroup.class);
+            i.putExtra("username", username);
+            i.putExtra("password", password);
+            startActivity(i);
+        }
+        return true;
+    }
+
+
+        OkHttpClient client = new OkHttpClient();
     void doGetRequest(String url, String username, String password) throws IOException {
         HttpUrl.Builder urlBuilder = HttpUrl.parse(url).newBuilder();
         urlBuilder.addQueryParameter("username", username);
@@ -108,12 +133,18 @@ public class GroupsView extends AppCompatActivity {
             Log.i("Result", res);
             JSONObject obj = new JSONObject(res);
             JSONArray arr = obj.getJSONArray("groups");
+            if (arr.length() == 0) {
+                Intent i = new Intent(this, CreateGroup.class);
+                i.putExtra("username", username);
+                i.putExtra("password", password);
+                startActivity(i);
+            }
             while(arr.length() != 0) {
                 JSONObject o = arr.getJSONObject(0);
                 group.add(o.getString("groupname"));
                 arr.remove(0);
             }
-            groups.setAdapter(new ArrayAdapter<String>(this, R.layout.group, R.id.groupName, group));
+            groups.setAdapter(new ArrayAdapter<String>(this, R.layout.group, group));
             groups.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
