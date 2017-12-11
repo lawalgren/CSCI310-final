@@ -24,12 +24,12 @@
         </activity>
         <activity android:name=".Login" />
         <activity android:name=".VerifyAttendance" />
-        <activity
-            android:name=".GroupsView"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".GroupsView" />
         <activity android:name=".StatsView" />
         <activity android:name=".EditGroup" />
-        <activity android:name=".CreateGroup"></activity>
+        <activity android:name=".CreateGroup" />
+        <activity android:name=".EditStat" />
+        <activity android:name=".CreateStat"></activity>
     </application>
 
 </manifest>

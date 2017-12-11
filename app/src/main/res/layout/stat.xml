@@ -1,0 +1,36 @@
+<LinearLayout
+    android:id="@+id/relativeLayout1"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/firstnameview"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_weight="1"
+        android:text="First Name"></TextView>
+
+    <TextView
+        android:id="@+id/lastnameview"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_weight="1"
+        android:text="Last Name"
+        ></TextView>
+
+    <TextView
+        android:id="@+id/roleview"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_weight="1"
+        android:text="Role"></TextView>
+
+    <TextView
+        android:id="@+id/dayview"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_weight="1"
+        android:text="Date"
+        ></TextView>
+</LinearLayout>

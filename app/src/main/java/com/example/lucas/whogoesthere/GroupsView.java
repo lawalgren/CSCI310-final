@@ -42,20 +42,14 @@ import okhttp3.Response;
 
 public class GroupsView extends AppCompatActivity {
     @BindView(R.id.groups) ListView groups;
-    @BindView(R.id.groupsToolbar) Toolbar groupsToolbar;
     String username;
     String password;
-    class Group {
-        public int id;
-        public String name;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groups_view);
         ButterKnife.bind(this);
-        setSupportActionBar(groupsToolbar);
         getSupportActionBar().setTitle("Groups");
 
         Intent intent = getIntent();
