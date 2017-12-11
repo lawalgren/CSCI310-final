@@ -6,4 +6,53 @@
     android:layout_height="match_parent"
     tools:context="com.example.lucas.whogoesthere.EditGroup">
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/background"
+        android:scaleType="centerCrop"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/groupnamefield"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="99dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            tools:layout_editor_absoluteX="85dp"
+            tools:layout_editor_absoluteY="127dp" />
+
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/groupnamefield"
+            android:layout_marginBottom="108dp"
+            android:background="@color/colorPrimary"
+            android:text="Save"
+            tools:layout_editor_absoluteX="51dp"
+            tools:layout_editor_absoluteY="376dp" />
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/save_button"
+            android:layout_alignBottom="@+id/save_button"
+            android:layout_marginStart="61dp"
+            android:layout_toEndOf="@+id/save_button"
+            android:background="@color/colorPrimary"
+            android:text="Cancel"
+            tools:layout_editor_absoluteX="210dp"
+            tools:layout_editor_absoluteY="376dp" />
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>

@@ -68,6 +68,18 @@ public class GroupsView extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        try {
+            doGetRequest("http://adm-store.com/AttendanceDB/get_groups.php", username, password);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_groupsview, menu);
