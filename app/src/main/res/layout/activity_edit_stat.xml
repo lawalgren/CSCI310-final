@@ -4,6 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.lucas.whogoesthere.EditStat">
+    tools:context="com.example.lucas.whogoesthere.CreateStat">
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/background"
+        android:scaleType="centerCrop"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <Button
+            android:id="@+id/editupdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="63dp"
+            android:layout_marginStart="68dp"
+            android:background="@color/colorPrimary"
+            android:text="Update" />
+
+        <Button
+            android:id="@+id/editcancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/editupdate"
+            android:layout_alignBottom="@+id/editupdate"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="62dp"
+            android:background="@color/colorPrimary"
+            android:text="Cancel" />
+
+        <EditText
+            android:id="@+id/firstnameedit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="62dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/lastnameedit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/firstnameedit"
+            android:layout_below="@+id/firstnameedit"
+            android:layout_marginTop="31dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/roleedit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/lastnameedit"
+            android:layout_below="@+id/lastnameedit"
+            android:layout_marginTop="24dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/dateedit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/lastnameedit"
+            android:layout_below="@+id/roleedit"
+            android:layout_marginTop="29dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

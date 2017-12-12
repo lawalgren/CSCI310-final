@@ -42,6 +42,7 @@ public class CreateStat extends AppCompatActivity {
         username = intent.getStringExtra("username");
         password = intent.getStringExtra("password");
         groupname = intent.getStringExtra("groupname");
+        getSupportActionBar().setTitle("Create Stat in " + groupname);
         go_create_stat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
